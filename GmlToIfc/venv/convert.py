@@ -66,9 +66,9 @@ def move_to_local(local_pont, l):
         local_points_list.append(numpy.ndarray.tolist(result))
     return local_points_list
 
-def from_EPSG28992_TO_WGS84(x1,y1,z):
-    # convert coordinates from EPSG28992 TO WGS84
-    inProj = Proj(init='epsg:28992')
+def from_EPSG2177_TO_WGS84(x1,y1,z):
+    # convert coordinates from EPSG2177 TO WGS84
+    inProj = Proj(init='epsg:2177')
     outProj = Proj(init='epsg:4326')
     x2,y2 = transform(inProj,outProj,x1,y1)
     return (x2,y2,z)
@@ -141,7 +141,7 @@ def CityGML2IFC(path,dst):
     generic=[]
     other = []
     #-- Find all instances of cityObjectMember and put them in a list
-    for obj in root.getiterator('{%s}cityObjectMember'% ns_citygml):
+    for obj in root.iter('{%s}cityObjectMember'% ns_citygml):
         cityObjects.append(obj)
 
 
@@ -169,9 +169,9 @@ def CityGML2IFC(path,dst):
         #points_list_complete.append((x)[:-3])
         points_list_complete.append(x)
     reference_point=find_reference_point(points_list_complete)
-    reference_point_wgs84=from_EPSG28992_TO_WGS84(reference_point[0],reference_point[1],reference_point[2])
+    reference_point_wgs84=from_EPSG2177_TO_WGS84(reference_point[0],reference_point[1],reference_point[2])
     max_point=find_max_point(points_list_complete)
-    max_point_wgs84=from_EPSG28992_TO_WGS84(max_point[0],max_point[1],max_point[2])
+    max_point_wgs84=from_EPSG2177_TO_WGS84(max_point[0],max_point[1],max_point[2])
 # ---------------------------------------------------------------------------------------------------------------------
     ifcprojectid="#"+str(next(counter))
     ifcsiteid="#"+str(next(counter))
