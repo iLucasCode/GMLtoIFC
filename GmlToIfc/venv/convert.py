@@ -205,7 +205,7 @@ def CityGML2IFC(path,dst):
     "\n#118= IFCMATERIAL('K01-4');"
     "\n#119=IFCLOCALPLACEMENT($,#108);"
     "\n" ,ifcprojectid, " = IFCPROJECT (",guid(),", #102, 'core:CityModel', '', $, $, $, (#107), #113);"  
-    "\n",ifcsiteid," = IFCSITE (",guid(),", #102, 'Rotterdam', 'Description of Default Site Rotterdam', 'LandUse', $, $, $, .ELEMENT.,""",max_point_wgs84,",",reference_point_wgs84,", $, $, $);")
+    "\n",ifcsiteid," = IFCSITE (",guid(),", #102, 'Poznań', 'Description of Default Site Poznań', 'LandUse', $, $, $, .ELEMENT.,""",max_point_wgs84,",",reference_point_wgs84,", $, $, $);")
 
     for building in buildings:
         ifcbuildingid = "#" + str(next(counter))
